@@ -689,7 +689,8 @@ cli_rnp_escape_string(const std::string &src)
     return result;
 }
 
-std::string
+#ifndef RNP_USE_STD_REGEX
+static std::string
 cli_rnp_unescape_for_regcomp(const std::string &src)
 {
     std::string result;
@@ -728,6 +729,7 @@ cli_rnp_unescape_for_regcomp(const std::string &src)
 
     return result;
 }
+#endif
 
 void
 cli_rnp_print_key_info(FILE *fp, rnp_ffi_t ffi, rnp_key_handle_t key, bool psecret, bool psigs)
